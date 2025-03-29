@@ -12,6 +12,8 @@ DATABASES = {
 
 bash에서 모델 만들어주는 명령어 
 python manage.py makemigrations
+
+                     
 python manage.py migrate
 
 서버실행
