@@ -1,0 +1,108 @@
+﻿{% load static %}
+{% block content %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="ko" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link rel="stylesheet" href="{% static '/css/style.css'%}">
+<title>코드구분</title>
+</head>
+
+<body>
+
+<class="common-code-container">
+&nbsp;고객사&nbsp; <select name="Select1" style="width: 138px">
+	<option></option>
+	</select> 정보유형&nbsp; <select name="Select2" style="width: 138px">
+	<option></option>
+	</select>&nbsp; 테이블명&nbsp; <input name="Text1" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input name="btnSearch4" style="width: 54px" type="button" value="조회" />&nbsp;
+	<input name="btnSearch0" style="width: 54px" type="button" value="신규" />&nbsp;
+	<input name="btnSearch2" style="width: 52px" type="button" value="삭제" />&nbsp;
+	<input name="btnSearch3" style="width: 54px" type="button" value="저장" />&nbsp;
+    </div>
+</div>
+<p style="height: 2px">&nbsp;</p>
+<table class="ms-prof-main">
+	<!-- fpstyle: 36,111111100 -->
+	<tr>
+		<td class="auto-style3" style="width: 123px">고<strong>객사ID</strong></td>
+		<td class="auto-style3" style="width: 85px">테이블ID</td>
+		<td class="auto-style3" style="width: 78px">컬럼ID</td>
+		<td class="auto-style3" style="width: 129px">컬<strong>럼데이터유형</strong></td>
+		<td class="auto-style3" style="width: 114px">총 자릿수</td>
+		<td class="auto-style3" style="width: 93px"><strong>소숫점</strong></td>
+		<td class="auto-style3" style="width: 454px">비고</td>
+	</tr>
+	<tr>
+		<td class="ms-prof-left" style="width: 123px; height: 21px"></td>
+		<td class="ms-prof-even" style="height: 21px; width: 85px"></td>
+		<td class="ms-prof-even" style="height: 21px; width: 78px">&nbsp;</td>
+		<td class="ms-prof-even" style="height: 21px; width: 129px"></td>
+		<td class="ms-prof-even" style="width: 114px; height: 21px"></td>
+		<td class="ms-prof-even" style="height: 21px; width: 93px"></td>
+		<td class="ms-prof-even" style="height: 21px; width: 454px">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="ms-prof-left" style="width: 123px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 85px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 78px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 129px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 114px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 93px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 454px">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="ms-prof-left" style="width: 123px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 85px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 78px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 129px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 114px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 93px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 454px">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="ms-prof-left" style="width: 123px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 85px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 78px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 129px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 114px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 93px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 454px">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="ms-prof-left" style="width: 123px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 85px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 78px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 129px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 114px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 93px">&nbsp;</td>
+		<td class="ms-prof-even" style="width: 454px">&nbsp;</td>
+	</tr>
+</table>
+<p style="height: 2px"><br />
+</p>
+<form action="" method="post">
+	고객사ID&nbsp;&nbsp; <input name="Text3" type="text" />&nbsp;&nbsp;테이블ID&nbsp;&nbsp; 
+	<input name="Text15" type="text" />&nbsp;&nbsp; <br />
+	<br />
+	컬럼ID&nbsp; &nbsp; &nbsp; <select name="Select4" style="width: 124px">
+	<option></option>
+	</select>&nbsp;&nbsp; 컬럼유형&nbsp; <select name="Select3" style="width: 124px">
+	<option></option>
+	</select>&nbsp;&nbsp;<br />
+	<br />
+	총자릿수&nbsp;&nbsp; <input name="Text16" type="text" />&nbsp;&nbsp; 소숫점&nbsp; &nbsp; 
+	<input name="Text17" type="text" />&nbsp;&nbsp;&nbsp; 
+	<br />
+	<br />
+	비&nbsp;&nbsp;&nbsp; 고&nbsp;&nbsp;
+	<input name="Text14" style="width: 773px" type="text" /> <br />
+</form>
+
+</body>
+
+</html>
+{% endblock %}

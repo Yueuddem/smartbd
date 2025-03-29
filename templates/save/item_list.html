@@ -1,0 +1,76 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX CRUD</title>
+</head>
+<body>
+    <h2>아이템 목록</h2>
+    <ul id="item-list"></ul>
+
+    <h2>새 아이템 추가</h2>
+    <input type="text" id="name" placeholder="아이템 이름">
+    <input type="text" id="description" placeholder="설명">
+    <button onclick="addItem()">추가</button>
+
+    <script>
+        const apiUrl = "http://127.0.0.1:8000/testapi/api/items/";
+
+        // 아이템 목록 불러오기
+        function fetchItems() {
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    let list = document.getElementById("item-list");
+                    list.innerHTML = "";
+                    data.forEach(item => {
+                        let li = document.createElement("li");
+                        li.innerHTML = `
+                            ${item.name} - ${item.description}
+                            <button onclick="deleteItem(${item.id})">삭제</button>
+                        `;
+                        list.appendChild(li);
+                    });
+                });
+        }
+
+        // 새 아이템 추가
+        function addItem() {
+            let name = document.getElementById("name").value;
+            let description = document.getElementById("description").value;
+
+            fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name, description })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("추가됨:", data);
+                fetchItems();
+            });
+        }
+
+        // 아이템 삭제
+        function deleteItem(id) {
+            fetch(`${apiUrl}${id}/`, {
+                method: "DELETE"
+            })
+            .then(() => {
+                console.log("삭제됨:", id);
+                fetchItems();
+            });
+        }
+
+        // 페이지 로드 시 데이터 불러오기
+        fetchItems();
+    </script>
+</body>
+</html>
+
+{% endblock %}

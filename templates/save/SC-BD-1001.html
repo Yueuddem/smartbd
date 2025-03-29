@@ -1,0 +1,176 @@
+﻿{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static '/css/style.css'%}">
+<title>공통코드</title>
+
+</head>
+
+<body>
+
+<class="common-code-container">
+	<label for="select1">공통코드구분</label>
+	<select id="select1" name="select1">
+		<option value="">선택</option>
+	</select>
+	<label for="text1">공통코드명</label>
+	<input name="Text1" type="text">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input name="btnSearch4" id="fetchData" style="width: 54px" type="button" value="조회">&nbsp;
+	<input name="btnSearch2" style="width: 52px" type="button" onclick="addItem()" value="신규">&nbsp;
+	<input name="btnSearch2" style="width: 52px" type="button" value="삭제">&nbsp;
+	<input name="btnSearch3" style="width: 54px" type="button" value="저장">&nbsp;
+</div>
+<p style="height: 2px">&nbsp;</p>
+<table class="ms-prof-main">
+	<thead>
+		<tr>
+			<th>공통코드ID</th>
+			<th>코드구분</th>
+			<th>상위공통코드</th>
+			<th>코드명</th>
+			<th>코드설명</th>
+			<th>보조문자속성1</th>
+			<th>보조문자속성2</th>
+			<th>보조문자속성3</th>
+			<th>보조숫자속성1</th>
+			<th>보조숫자속성2</th>
+			<th>보조숫자속성3</th>
+			<th>비고</th>
+			<th>체크박스</th>
+		</tr>
+	</thead>
+	<tbody id="item-list">
+		<!-- JavaScript가 데이터를 여기에 삽입 -->
+	</tbody>
+</table>
+
+<p style="height: 2px"><br>
+</p>
+<form action="" method="post">
+	공통코드ID&nbsp;&nbsp; <input type="text" id="com_cd_id"/>&nbsp;&nbsp;&nbsp; 
+	코드구분 &nbsp;&nbsp;<input type="text" id="cd_sep"> &nbsp;&nbsp;<br>
+	<br>
+	상위공통코드ID&nbsp;&nbsp;<input type="text" id="hr_cd"> 
+	코드명&nbsp;&nbsp;<input type="text" style="width: 263px" id="cd_nm">&nbsp;&nbsp;<br>
+	<br>
+	코드&nbsp; 설명&nbsp;&nbsp;
+	<input style="width: 762px" type="text" id="cd_exp">&nbsp;&nbsp; <br>
+	<br>
+	보조문자속성1&nbsp;&nbsp; <input style="width: 246px" type="text" id="assi_char_prop1">&nbsp;&nbsp;&nbsp; 
+	보조문자속성2&nbsp;&nbsp; <input style="width: 263px" type="text" id="assi_char_prop2">&nbsp;&nbsp; 
+	보조문자속성3&nbsp;&nbsp; <input  style="width: 277px" type="text" id="assi_char_prop3">
+	<br>
+	<br>
+	보조숫자속성1&nbsp;&nbsp; <input  style="width: 246px" type="text" id="assi_num_prop1">&nbsp;&nbsp;&nbsp; 
+	보조숫자속성2&nbsp;&nbsp; <input  style="width: 263px" type="text" id="assi_num_prop2">&nbsp;&nbsp; 
+	보조숫자속성3&nbsp;&nbsp; <input  style="width: 277px" type="text" id="assi_num_prop3">
+	<br>
+	<br>
+	비&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 고&nbsp;&nbsp;
+	<input  style="width: 762px" type="text" id="note"> <br>
+</form>
+</body>
+
+</html>
+<script>
+	const apiUrl = "http://127.0.0.1:8000/adminpage/api/SCBD1001api/";
+
+	{% comment %} document.addEventListener("DOMContentLoaded", function() {
+		let commoncd = JSON.parse('{{ commoncd|safe }}');/ JSON 데이터 파싱
+		let tableBody = document.getElementById("common-code-table-body");
+
+		commoncd.forEach(item => {
+			let row = document.createElement("tr");
+			row.innerHTML = `
+				<td>${item.com_cd_id}</td>
+				<td>${item.cd_sep}</td>
+				<td>${item.hr_cd}</td>
+				<td>${item.cd_nm}</td>
+				<td>${item.cd_exp}</td>
+				<td>${item.assi_char_prop1}</td>
+				<td>${item.assi_char_prop2}</td>
+				<td>${item.assi_char_prop3}</td>
+				<td>${item.assi_num_prop1}</td>
+				<td>${item.assi_num_prop2}</td>
+				<td>${item.assi_num_prop3}</td>
+				<td>${item.note}</td>
+			`;
+			tableBody.appendChild(row);
+		});
+	}); {% endcomment %}
+
+	function fetchItems() {
+		fetch(apiUrl)
+			.then(response => response.json())
+			.then(data => {
+				let list = document.getElementById("item-list");
+				list.innerHTML = "";
+	
+				data.forEach(item => {
+					let row = document.createElement("tr");
+					row.innerHTML = `
+						<td>${item.com_cd_id}</td>
+						<td>${item.cd_sep}</td>
+						<td>${item.hr_cd}</td>
+						<td>${item.cd_nm}</td>
+						<td>${item.cd_exp}</td>
+						<td>${item.assi_char_prop1}</td>
+						<td>${item.assi_char_prop2}</td>
+						<td>${item.assi_char_prop3}</td>
+						<td>${item.assi_num_prop1}</td>
+						<td>${item.assi_num_prop2}</td>
+						<td>${item.assi_num_prop3}</td>
+						<td>${item.note}</td>
+						<button onclick="deleteItem(${item.com_cd_id})">삭제</button>
+					`;
+					list.appendChild(row);
+				});
+			});
+	}
+	function addItem() {
+		let com_cd_id = document.getElementById("com_cd_id").value;
+		let cd_sep = document.getElementById("cd_sep").value;
+		let hr_cd = document.getElementById("hr_cd").value;
+		let cd_nm = document.getElementById("cd_nm").value;
+		let cd_exp = document.getElementById("cd_exp").value;
+		let assi_char_prop1 = document.getElementById("assi_char_prop1").value;
+		let assi_char_prop2 = document.getElementById("assi_char_prop2").value;
+		let assi_char_prop3 = document.getElementById("assi_char_prop3").value;
+		let assi_num_prop1 = document.getElementById("assi_num_prop1").value;
+		let assi_num_prop2 = document.getElementById("assi_num_prop2").value;
+		let assi_num_prop3 = document.getElementById("assi_num_prop3").value;
+		let note = document.getElementById("note").value;
+
+		fetch(apiUrl, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({ com_cd_id, cd_sep, hr_cd, cd_nm, cd_exp,assi_char_prop1, assi_char_prop2, assi_char_prop3,assi_num_prop1,assi_num_prop2,assi_num_prop3,note, })
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log("추가됨:", data);
+			fetchItems();
+		});
+	}
+
+	function deleteItem(id) {
+		fetch(`${apiUrl}${id}/`, {
+			method: "DELETE"
+		})
+		.then(() => {
+			console.log("삭제됨:", id);
+			fetchItems();
+		});
+	}
+
+	// 페이지 로드 시 데이터 불러오기
+	fetchItems();
+</script>
+{% endblock %}

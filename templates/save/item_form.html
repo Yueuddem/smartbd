@@ -1,0 +1,7 @@
+<h2>아이템 입력</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">저장</button>
+</form>
+<a href="{% url 'testapi:item_list' %}">목록으로</a>

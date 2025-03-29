@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+ 
+{% block title %}새로운 {{ model_name }} 추가{% endblock title %}
+ 
+{% block content %}
+<div class="col-md-12">
+    <h4>{{ model_name }} 데이터 추가</h4> 
+ <form method="POST" class="post-form" action="{% url 'adminpage:dynamic_add' model_name %}">  
+   {% csrf_token %}  
+  <div class="container">  
+ <br>  
+  <div class="form-group row">  
+  <label class="col-sm-1 col-form-label"></label>  
+  <div class="col-sm-4">  
+  <h3>입력 내용</h3>  
+  </div>  
+   </div>  
+
+   {% for field in form %}
+   <div class="form-group row">  
+  <label class="col-sm-2 col-form-label">{{ field.label }}</label>  
+  <div class="col-sm-4">  
+    {{ field }}  
+  </div>  
+   </div>  
+   {% endfor %}
+
+  <div class="form-group row">  
+  <label class="col-sm-1 col-form-label"></label>  
+  <div class="col-sm-4">  
+  <button type="submit" class="btn btn-primary">저장</button>  
+  </div>  
+   </div>  
+  </div>  
+ </form>  
+</div> 
+{% endblock content %}

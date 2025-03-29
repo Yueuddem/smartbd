@@ -1,0 +1,26 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="ko" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link rel="stylesheet" href="{% static '/css/style.css'%}">
+<title>코드구분</title>
+</head>
+<body>
+<h2>아이템 목록</h2>
+<a href="{% url 'testapi:item_create' %}">새 아이템 추가</a>
+<ul>
+    {% for item in items %}
+        <li>
+            {{ item.name }} - {{ item.description }}
+            <a href="{% url 'testapi:item_update' item.pk %}">수정</a>
+            <a href="{% url 'testapi:item_delete' item.pk %}">삭제</a>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
+{% endblock %}
